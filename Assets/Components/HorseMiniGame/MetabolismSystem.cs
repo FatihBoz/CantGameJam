@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -7,6 +8,8 @@ public class MetabolismSystem
     public NutrientStorage storageModel;
 
     MetabolismView view;
+
+    Nutrient currentUsingNutrient;
 
     float energy;
 
@@ -25,18 +28,50 @@ public class MetabolismSystem
         UpdateViewFromModel(); // ilk açýlýþta senkronize et
     }
 
-    private void UpdateViewFromModel()
+    public void AddNutrition(NutritionSO type)
     {
-        view.UpdateView(
-            storageModel.Carbohydrate.Amount,
-            storageModel.Fat.Amount,
-            storageModel.Protein.Amount,
-            Energy
-        );
+        storageModel.Add(type);
+        UpdateViewFromModel();
     }
 
-    public void Digest(RacePhase racePhase)
+    private void UpdateViewFromModel()
     {
+        view.UpdateView(storageModel, Energy);
+    }
+
+    bool isDigesting = false;
+
+    public IEnumerator Digest()
+    {
+        if (isDigesting || currentUsingNutrient == null)
+        {
+            yield break;
+        }
+
+        isDigesting = true;
+        Debug.Log("Digesting nutrient: " + currentUsingNutrient.Name + " with amount: " + currentUsingNutrient.Amount);
+
+        float delay = 2f;
+
+        while (currentUsingNutrient != null && currentUsingNutrient.Amount > 0)
+        {
+            Consume(currentUsingNutrient);
+            UpdateViewFromModel();
+            yield return new WaitForSeconds(delay);
+        }
+
+        currentUsingNutrient = null;
+        isDigesting = false;
+    }
+
+    //Update'de deðil de eventlerle çalýþtýrmak lazým.
+    public void SelectNutrient(RacePhase racePhase)
+    {
+        if(currentUsingNutrient != null)
+        {
+            return; // If a nutrient is already being used, do not select a new one
+        }
+
         Nutrient[] nutrientPriority;
 
         switch (racePhase)
@@ -60,21 +95,24 @@ public class MetabolismSystem
         // Try consuming the first available nutrient in the priority list
         foreach (var nutrient in nutrientPriority)
         {
-            if (nutrient.Amount > 0)
+            if(nutrient.Amount > 0)
             {
-                Consume(nutrient);
-                break;
+                currentUsingNutrient = nutrient;
+                return;
             }
         }
-
-        UpdateViewFromModel();
     }
 
     private void Consume(Nutrient nutrient)
     {
-        float consumedAmount = Mathf.Min(nutrient.Amount, nutrient.DigestionRate);
-        nutrient.Amount -= consumedAmount;
-        Energy += consumedAmount * nutrient.EnergyPerUnit;
+        nutrient.Amount -= nutrient.DigestionRate;
+        Energy += nutrient.DigestionRate * nutrient.EnergyPerUnit;
+
+        if(nutrient.Amount < 0)
+        {
+            nutrient.Amount = 0; // Ensure nutrient amount does not go negative
+            currentUsingNutrient = null; // Reset to allow selection of a new nutrient
+        }
         UpdateViewFromModel();
     }
 }

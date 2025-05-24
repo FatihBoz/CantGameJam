@@ -26,17 +26,17 @@ public class Nutrient
         {
             case NutrientType.Carbohydrate:
                 Name = "Carbohydrate";
-                DigestionRate = 0.5f;
+                DigestionRate = 0.2f;
                 EnergyPerUnit = 4.0f;
                 break;
             case NutrientType.Fat:
                 Name = "Fat";
-                DigestionRate = 0.3f;
+                DigestionRate = 0.1f;
                 EnergyPerUnit = 9.0f;
                 break;
             case NutrientType.Protein:
                 Name = "Protein";
-                DigestionRate = 0.4f;
+                DigestionRate = 0.3f;
                 EnergyPerUnit = 4.0f;
                 break;
             default:

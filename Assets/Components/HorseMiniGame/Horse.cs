@@ -6,7 +6,7 @@ public class Horse : MonoBehaviour
 
     public MetabolismView metabolismView;
 
-    float speed;
+    float speed = 10;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,13 +23,19 @@ public class Horse : MonoBehaviour
 
     public void MoveHorse()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
     public void UpdateHorse()
     {
-        metabolismSystem.Digest(SetRacePhase(RaceManager.Instance.raceTime));
+        metabolismSystem.SelectNutrient(SetRacePhase(RaceManager.Instance.raceTime));
+        StartCoroutine(metabolismSystem.Digest());
         // Horse güncellemeleri burada yapýlacak
+    }
+
+    public void FeedHorse(NutritionSO so)
+    {
+        metabolismSystem.AddNutrition(so);
     }
 
     public RacePhase SetRacePhase(float raceTime)

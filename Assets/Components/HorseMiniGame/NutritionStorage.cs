@@ -9,41 +9,32 @@ public class NutrientStorage
     public Nutrient Carbohydrate { get; private set; }
     public Nutrient Fat { get; private set; }
     public Nutrient Protein { get; private set; }
-    
-    public NutrientStorage()
+
+    private float maxCarbohydrate;
+    private float maxFat;
+    private float maxProtein;
+
+    public NutrientStorage(float maxCarbs = 1f, float maxFats = 1f, float maxProteins = 1f)
     {
-        // Initialize nutrients with zero amounts
         Carbohydrate = new Nutrient(NutrientType.Carbohydrate);
         Fat = new Nutrient(NutrientType.Fat);
         Protein = new Nutrient(NutrientType.Protein);
+
+        maxCarbohydrate = Mathf.Max(0.01f, maxCarbs);
+        maxFat = Mathf.Max(0.01f, maxFats);
+        maxProtein = Mathf.Max(0.01f, maxProteins);
     }
 
     public void Add(NutritionSO type)
     {
-        // Update only the Amount for each Nutrient
-        Carbohydrate.Amount += type.carbohydrate.Amount;
-        Fat.Amount += type.fat.Amount;
-        Protein.Amount += type.protein.Amount;
+        Carbohydrate.Amount = Mathf.Min(Carbohydrate.Amount + type.carbohydrate.Amount, maxCarbohydrate);
+        Fat.Amount = Mathf.Min(Fat.Amount + type.fat.Amount, maxFat);
+        Protein.Amount = Mathf.Min(Protein.Amount + type.protein.Amount, maxProtein);
+
         OnValuesChanged?.Invoke();
     }
 
-
-    //public void UseEnergy(float amount)
-    //{
-    //    Energy = Mathf.Max(0, Energy - amount);
-    //}
-
-    //public float CalculateStartSpeedBoost()
-    //{
-    //    float buff = Mathf.Clamp(Proteins * 0.1f, 0f, 5f);
-    //    return buff;
-    //}
-
-    //public void ApplyBuff(ref float speed)
-    //{
-    //    float buff = CalculateStartSpeedBoost();
-    //    speed += buff;
-    //}
-
-    //public float GetTotalEnergy() => Energy;
+    public float GetCarbRatio() => Mathf.Clamp01(Carbohydrate.Amount / maxCarbohydrate);
+    public float GetFatRatio() => Mathf.Clamp01(Fat.Amount / maxFat);
+    public float GetProteinRatio() => Mathf.Clamp01(Protein.Amount / maxProtein);
 }
