@@ -8,7 +8,6 @@ public class ArrowCombiningMiniGame : MonoBehaviour
     public void OnArrowCrafted()
     {
         currentArrowCount++;
-        print(currentArrowCount);
         if (currentArrowCount >= arrowCountToCraft)
         {
             //Mini Game Bitti

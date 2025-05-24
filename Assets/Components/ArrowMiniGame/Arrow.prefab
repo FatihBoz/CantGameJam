@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4270897418581101050}
   - component: {fileID: 5961405947223780920}
   - component: {fileID: 8971019093961418372}
-  - component: {fileID: 4512330378867559123}
   m_Layer: 5
   m_Name: RealArrow
   m_TagString: Untagged
@@ -67,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3684364584561053034, guid: 0b1828c7b4f216343bd03ca8888b0eeb, type: 3}
+  m_Sprite: {fileID: -2174785489482085883, guid: 2f761e069a0776b4aa85f1f70c232de3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,18 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec14fa8e88196d344a9d43dc5baacf0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!225 &4512330378867559123
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27454338926763068}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  initialBlueSprite: {fileID: -2174785489482085883, guid: 2f761e069a0776b4aa85f1f70c232de3, type: 3}
+  initialRedSprite: {fileID: 3523608597263018118, guid: 2f761e069a0776b4aa85f1f70c232de3, type: 3}
+  wholeRedSprite: {fileID: 8729744763153277832, guid: 0b1828c7b4f216343bd03ca8888b0eeb, type: 3}
+  wholeBlueSprite: {fileID: -3684364584561053034, guid: 0b1828c7b4f216343bd03ca8888b0eeb, type: 3}
 --- !u!1 &58728943672204776
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,6 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5163277706736352949}
   - component: {fileID: 6291164363031118203}
+  - component: {fileID: 3979264889659426918}
   m_Layer: 5
   m_Name: Arrow
   m_TagString: Untagged
@@ -146,3 +138,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58728943672204776}
   m_CullTransparentMesh: 1
+--- !u!225 &3979264889659426918
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58728943672204776}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
