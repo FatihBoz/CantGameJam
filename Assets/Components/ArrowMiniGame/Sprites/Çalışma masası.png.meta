@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fa1bf778a48b32e4aa3532a28ced7bcf
+guid: 530705ca798899f4aa7f9f83ef578e6a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -38807097732301139
-    second: kutu_0
+      213: 5493592862075960581
+    second: "\xC7al\u0131\u015Fma masas\u0131_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kutu_0
+      name: "\xC7al\u0131\u015Fma masas\u0131_0"
       rect:
         serializedVersion: 2
-        x: 23
-        y: 22
-        width: 52
-        height: 28
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: daef6e47621267ff0800000000000000
-      internalID: -38807097732301139
+      spriteID: 50db8ac0a992d3c40800000000000000
+      internalID: 5493592862075960581
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      kutu_0: -38807097732301139
+      "\xC7al\u0131\u015Fma masas\u0131_0": 5493592862075960581
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

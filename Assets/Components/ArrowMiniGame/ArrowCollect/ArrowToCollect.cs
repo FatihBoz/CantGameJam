@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ArrowToCollect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
@@ -11,6 +12,7 @@ public class ArrowToCollect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     [SerializeField] private Sprite initialRedSprite;
     [SerializeField] private Sprite wholeRedSprite;
     [SerializeField] private Sprite wholeBlueSprite;
+
 
     private ArrowDirection arrowDirection = ArrowDirection.Up;
     private Vector3 lastPressPos;
@@ -48,6 +50,11 @@ public class ArrowToCollect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!miniGame.ArrowsCanBeCollected)
+        {
+            return;
+        }
+
         if (isDragging && !isHolding)
         {
             if (Input.mousePosition.y < lastPressPos.y && arrowDirection == ArrowDirection.Up)
@@ -81,10 +88,17 @@ public class ArrowToCollect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
                 }
 
 
-                miniGame.OnArrowCollected();
+                miniGame.OnArrowCollected(this);
                 isHolding = true;
-                transform.parent.AddComponent<DraggableObject>();
-                Destroy(gameObject.GetComponent<ArrowToCollect>());
+                if (parentTransform.gameObject.TryGetComponent<RectTransform>(out var rect))
+                {
+                    rect.DOAnchorPos(miniGame.MiddlePoint.anchoredPosition, miniGame.ReachTimeToMiddlePoint).OnComplete(() =>
+                    {
+                        transform.parent.AddComponent<DraggableObject>();
+                        Destroy(gameObject.GetComponent<ArrowToCollect>());
+                    });
+                }
+
             }
             
              
@@ -92,6 +106,8 @@ public class ArrowToCollect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         }
 
     }
+
+
 
     public void OnEndDrag(PointerEventData eventData)
     {

@@ -15,15 +15,21 @@ public class ArrowQualityCheck : MonoBehaviour
     [SerializeField] private Button resetButton;
 
     [Header("Arrow Parts")]
-    [SerializeField] private DraggableObject ArrowHead;
-    [SerializeField] private DraggableObject ArrowBody;
-    [SerializeField] private DraggableObject ArrowFeather;
+    private DraggableObject arrowHead;
+    private DraggableObject arrowBody;
+    private DraggableObject arrowFeather;
 
     [Header("Arrow Parts Values")]
     [SerializeField] private float distanceBetweenArrowParts = 250f;
 
     [Header("Arrow Feather Sprites")]
     [SerializeField] private List<Sprite> arrowFeatherSprites;
+
+    [Header("Closer Panels")]
+    [SerializeField] private GameObject arrowHeadPanel;
+    [SerializeField] private GameObject arrowBodyPanel;
+    [SerializeField] private GameObject arrowFeatherPanel;
+
 
     private ArrowCombiningMiniGame miniGame;
 
@@ -38,7 +44,7 @@ public class ArrowQualityCheck : MonoBehaviour
         qualityCheckButton.onClick.AddListener(CheckForQuality);
         resetButton.onClick.AddListener(ResetArrowParts);
 
-        ResetArrowParts();
+        //ResetArrowParts();
     }
 
     Queue<DraggableObject> GatherArrowParts()
@@ -46,9 +52,9 @@ public class ArrowQualityCheck : MonoBehaviour
 
         Queue<DraggableObject> draggableObjects = new();
         
-        draggableObjects.Enqueue(ArrowHead);
-        draggableObjects.Enqueue(ArrowBody);
-        draggableObjects.Enqueue(ArrowFeather);
+        draggableObjects.Enqueue(arrowHead);
+        draggableObjects.Enqueue(arrowBody);
+        draggableObjects.Enqueue(arrowFeather);
 
         return draggableObjects;
     }
@@ -58,6 +64,7 @@ public class ArrowQualityCheck : MonoBehaviour
     {
         Queue<DraggableObject> tempQ = GatherArrowParts();
         int tempCount = tempQ.Count;
+        print(tempCount);
         for (int i = 0; i < tempCount; ++i)
         {
             DraggableObject first = tempQ.Dequeue();
@@ -81,8 +88,8 @@ public class ArrowQualityCheck : MonoBehaviour
 
     bool CheckForQualityYAxis()
     {
-        if (!(ArrowHead.transform.localPosition.y > ArrowBody.transform.localPosition.y + comparisonLength) ||
-            !(ArrowBody.transform.localPosition.y > ArrowFeather.transform.localPosition.y + comparisonLength))
+        if (!(arrowHead.transform.localPosition.y > arrowBody.transform.localPosition.y + comparisonLength) ||
+            !(arrowBody.transform.localPosition.y > arrowFeather.transform.localPosition.y + comparisonLength))
         {
             print("Quality Check FailedY");
             return false;
@@ -113,12 +120,7 @@ public class ArrowQualityCheck : MonoBehaviour
 
     void ResetArrowParts()
     {
-        int r = Random.Range(0, arrowFeatherSprites.Count);
-        ArrowFeather.GetComponent<Image>().sprite = arrowFeatherSprites[r];
-
-
-
-        List<float> positionList = new List<float>() { 0, distanceBetweenArrowParts, -distanceBetweenArrowParts };
+        List<float> positionList = new() { 0, distanceBetweenArrowParts, -distanceBetweenArrowParts };
 
         Queue<DraggableObject> tempQ = GatherArrowParts();
 
@@ -126,12 +128,36 @@ public class ArrowQualityCheck : MonoBehaviour
 
         for(int i = 0; i < tempCount; ++i)
         {
-            int randomIndex = Random.Range(0, positionList.Count);
-            tempQ.Dequeue().transform.localPosition = new Vector3(positionList[randomIndex], 0, 0);
-            positionList.RemoveAt(randomIndex);
+            if (tempQ.Peek() != null &&tempQ.Dequeue().TryGetComponent<ArrowPart>(out var arrow))
+            {
+                arrow.ResetPosition();
+            }
         }
+
+        arrowHeadPanel.SetActive(false);
+        arrowBodyPanel.SetActive(false);
+        arrowFeatherPanel.SetActive(false);
     }
 
+
+    public void SetArrowHead(DraggableObject arrowHead)
+    {
+        this.arrowHead = arrowHead;
+        arrowHeadPanel.SetActive(true);
+    }
+
+    public void SetArrowBody(DraggableObject arrowBody)
+    {
+        this.arrowBody = arrowBody;
+        arrowBodyPanel.SetActive(true);
+    }
+
+    public void SetArrowFeather(DraggableObject arrowFeather)
+    {
+        this.arrowFeather = arrowFeather;
+        arrowFeatherPanel.SetActive(true);
+
+    }
 
 
 }
