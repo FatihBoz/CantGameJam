@@ -50,8 +50,8 @@ public class MouseQTE : MonoBehaviour
 
                     if (cycleTime >= minSpeed && cycleTime <= maxSpeed)
                     {
-                        Debug.Log("✔️ Doğru tempoda gel-git!");
-                        oilManager.DecreaseOilTransparency(0.02f);
+                       // Debug.Log("✔️ Doğru tempoda gel-git!");
+                       // oilManager.DecreaseOilTransparency(0.02f);
 
                     }
                     lastCycleTime = Time.time;

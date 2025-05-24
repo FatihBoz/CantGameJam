@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class OilingManager : MonoBehaviour
 {
@@ -8,17 +9,22 @@ public class OilingManager : MonoBehaviour
     public float cellSize = 0.5f;
     public Vector2 gridStartPos;
 
-    [Header("Görsel Ayarlar")]
-    public GameObject shinyPrefab;
-
-    private GameObject[,] oilGrid;
+    private bool[,] oilGrid;
 
     private int filledCount = 0;
 
+    public SpriteRenderer secondSpriteRenderer;
+    public SpriteRenderer thirdSpriteRenderer;
+
+    public TMP_Text oilCountText;
+    public TMP_Text rubCountText;
+
+    public Sprite[] backFaces;
+    public Sprite[] frontFaces;
 
     void Awake()
     {
-        oilGrid = new GameObject[gridSizeX, gridSizeY];
+        oilGrid = new bool[gridSizeX, gridSizeY];
     }
 
     /// <summary>
@@ -45,9 +51,64 @@ public class OilingManager : MonoBehaviour
 
     private void CreateShinyEffect(int x, int y)
     {
+        oilGrid[x, y] = true;
         Vector2 cellCenter = gridStartPos + new Vector2((x + 0.5f) * cellSize, (y + 0.5f) * cellSize);
-        oilGrid[x, y]=Instantiate(shinyPrefab, cellCenter, Quaternion.identity);
         filledCount++; // Yeni eklendi
+
+        Color tempColor = secondSpriteRenderer.color;
+        tempColor.a = Mathf.Clamp01((float)filledCount / (gridSizeX * gridSizeY));
+        secondSpriteRenderer.color = tempColor; // İkinci sprite renderer'ın rengini güncelle
+
+        oilCountText.text = "%"+(tempColor.a * 100).ToString();
+
+    }
+    public void RubOil(float amount)
+    {
+        if (GetIsFullfilled())
+        {
+            Debug.Log("calisiy");
+            Color tempColor = thirdSpriteRenderer.color;
+
+            tempColor.a += amount;
+            tempColor.a = Mathf.Clamp01(tempColor.a);
+            thirdSpriteRenderer.color = tempColor; // İkinci sprite renderer'ın rengini güncelle
+
+            rubCountText.text = "%" + (thirdSpriteRenderer.color.a * 100);
+        }
+    }
+
+    public void SwitchToFront()
+    {
+        ClearGrid();
+        Color tempColor = secondSpriteRenderer.color;
+        tempColor.a = 0;
+        tempColor.a = Mathf.Clamp01(tempColor.a);
+        secondSpriteRenderer.color = tempColor;
+
+
+        tempColor = thirdSpriteRenderer.color;
+        tempColor.a = 0;
+        tempColor.a = Mathf.Clamp01(tempColor.a);
+        thirdSpriteRenderer.color = tempColor;
+        
+        GetComponent<SpriteRenderer>().sprite = frontFaces[0];
+        secondSpriteRenderer.sprite = frontFaces[1];
+        thirdSpriteRenderer.sprite = frontFaces[2];
+    }
+    public void SwitchToBack()
+    {
+        ClearGrid();
+        Color tempColor = secondSpriteRenderer.color;
+        tempColor.a = 0;
+        tempColor.a = Mathf.Clamp01(tempColor.a);
+        secondSpriteRenderer.color = tempColor;
+        tempColor = thirdSpriteRenderer.color;
+        tempColor.a = 0;
+        tempColor.a = Mathf.Clamp01(tempColor.a);
+        thirdSpriteRenderer.color = tempColor;
+        GetComponent<SpriteRenderer>().sprite = backFaces[0];
+        secondSpriteRenderer.sprite = backFaces[1];
+        thirdSpriteRenderer.sprite = backFaces[2];
     }
 
     /// <summary>
@@ -55,31 +116,13 @@ public class OilingManager : MonoBehaviour
     /// </summary>
     public void ClearGrid()
     {
-        oilGrid = new GameObject[gridSizeX, gridSizeY];
+        oilGrid = new bool[gridSizeX, gridSizeY];
         filledCount = 0;
     }
     public bool GetIsFullfilled()
     {
         return filledCount >= gridSizeX * gridSizeY;
     }
-    public void DecreaseOilTransparency(float amount)
-    {
-        // Yağlı hücrelerin saydamlığını azalt
-        for (int x = 0; x < gridSizeX; x++)
-        {
-            for (int y = 0; y < gridSizeY; y++)
-            {
-                if (oilGrid[x, y])
-                {
-                    Color oilGridColor= oilGrid[x, y].GetComponent<SpriteRenderer>().color;
-                    oilGridColor.a -= amount;
-                    oilGridColor.a = Mathf.Clamp(oilGridColor.a, 0f, 1f); // 0 ile 1 arasında sınırla
-                    oilGrid[x, y].GetComponent<SpriteRenderer>().color=oilGridColor;
-                }
-            }
-        }
-    }
-
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -91,7 +134,6 @@ public class OilingManager : MonoBehaviour
                 Vector2 cellCenter = gridStartPos + new Vector2((x + 0.5f) * cellSize, (y + 0.5f) * cellSize);
                 Vector2 cellSizeVec = new Vector2(cellSize, cellSize);
 
-                // Hücre çerçevesini çiz
                 Gizmos.DrawWireCube(cellCenter, cellSizeVec);
             }
         }
