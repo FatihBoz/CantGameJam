@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "havu\xE7_0": 628709009114946439
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
