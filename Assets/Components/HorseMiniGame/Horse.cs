@@ -2,53 +2,44 @@ using UnityEngine;
 
 public class Horse : MonoBehaviour
 {
-    MetabolismSystem metabolismSystem;
+    [SerializeField] HorseView view;
+    [SerializeField] MetabolismView metabolismView;
 
-    public MetabolismView metabolismView;
+    private HorseModel model;
+    private CiritBehavior ciritBehavior;
 
-    private float maxSpeed = 10f;
-    float speed = 10;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        metabolismSystem = new MetabolismSystem(metabolismView);
+        model = new HorseModel(metabolismView);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HandleDigestion()
     {
-        UpdateHorse();
-        MoveHorse();
-    }
-
-    public void MoveHorse()
-    {
-        speed = CalculateSpeedByEnergy();
-
-        if (speed > 0)
-        {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
-            metabolismSystem.ConsumeEnergy(0.2f * Time.deltaTime);
-        }
-    }
-
-    public void UpdateHorse()
-    {
-        metabolismSystem.SelectNutrientType(RaceManager.Instance.CurrentRacePhase);
-        StartCoroutine(metabolismSystem.Digest());
-        // Horse güncellemeleri burada yapýlacak
-    }
-
-    private float CalculateSpeedByEnergy()
-    {
-        float normalizedEnergy = Mathf.Clamp01(metabolismSystem.Energy);
-        return normalizedEnergy * maxSpeed; 
+        model.MetabolismSystem.SelectNutrientType(RaceManager.Instance.CurrentRacePhase);
     }
 
     public void FeedHorse(NutritionSO so)
     {
-        metabolismSystem.AddNutrition(so);
+        model.MetabolismSystem.AddNutrition(so);
+    }
+
+    public void AssignHorseShoe(HorseShoeType shoeType)
+    {
+        model.HorseShoeType = shoeType;
+    }
+
+    public void CalculateScores()
+    {
+        model.AttackScore = ciritBehavior.CalculateAttackScore(model.MetabolismSystem.storageModel, model.Speed);
+        model.DefenseScore = ciritBehavior.CalculateDefenseScore(model.Speed, model.Weight);
+    }
+
+    public void CalculateWeight()
+    {
+        model.CalculateWeight();
     }
 
 }
+
+

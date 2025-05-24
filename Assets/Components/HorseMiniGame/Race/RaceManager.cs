@@ -91,8 +91,6 @@ public class RaceManager : MonoBehaviour
         }
     }
 }
-
-
 public enum RacePhase
 {
     Start,
