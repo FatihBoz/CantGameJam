@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fa1bf778a48b32e4aa3532a28ced7bcf
+guid: 6e22a43ee175a6f49b45a97361a3a2e4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -38807097732301139
-    second: kutu_0
+      213: 5821639766434324692
+    second: at1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,17 +122,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kutu_0
+      name: at1_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 22
-        width: 52
-        height: 28
+        x: 0
+        y: 0
+        width: 1027
+        height: 739
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: daef6e47621267ff0800000000000000
-      internalID: -38807097732301139
+      spriteID: 4d02b90f58e9ac050800000000000000
+      internalID: 5821639766434324692
       vertices: []
       indices: 
       edges: []
@@ -160,8 +173,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      kutu_0: -38807097732301139
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   carbohydrate:
-    amount: 80
+    amount: 8
   fat:
-    amount: 10
+    amount: 1
   protein:
-    amount: 10
+    amount: 1

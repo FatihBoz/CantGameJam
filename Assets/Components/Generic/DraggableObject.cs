@@ -18,16 +18,23 @@ public class DraggableObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     {
         Cursor.visible = false;
         canvasGroup.blocksRaycasts = false;
+        print("On Begin Drag");
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta / gameCanvas.scaleFactor;
+
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Cursor.visible = true;
         canvasGroup.blocksRaycasts = true;
+
     }
+
+
+    //OnDrop, OnEndDrag METODUNDAN ÖNCE CAÐIRILIYOR!
+
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e88dce7a73f9d0c47abe62af6108ecd7
+guid: a8846fdbcd3589742a31c2624c0deeac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1613823129889406495
-    second: Image_fwqqwx-removebg-preview_0
+      213: -1392087751135777207
+    second: "ok\xE7uluk arka plan_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,30 +122,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Image_fwqqwx-removebg-preview_0
+      name: "ok\xE7uluk arka plan_0"
       rect:
         serializedVersion: 2
-        x: 242
-        y: 14
-        width: 181
-        height: 347
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f1efd531693756610800000000000000
-      internalID: 1613823129889406495
+      spriteID: 94e2161e09f4eace0800000000000000
+      internalID: -1392087751135777207
       vertices: []
       indices: 
       edges: []
@@ -173,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Image_fwqqwx-removebg-preview_0: 1613823129889406495
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

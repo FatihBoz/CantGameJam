@@ -6,7 +6,8 @@ public class Horse : MonoBehaviour
 
     public MetabolismView metabolismView;
 
-    float speed;
+    private float maxSpeed = 10f;
+    float speed = 10;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,29 +24,31 @@ public class Horse : MonoBehaviour
 
     public void MoveHorse()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        speed = CalculateSpeedByEnergy();
+
+        if (speed > 0)
+        {
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            metabolismSystem.ConsumeEnergy(0.2f * Time.deltaTime);
+        }
     }
 
     public void UpdateHorse()
     {
-        metabolismSystem.Digest(SetRacePhase(RaceManager.Instance.raceTime));
+        metabolismSystem.SelectNutrientType(RaceManager.Instance.CurrentRacePhase);
+        StartCoroutine(metabolismSystem.Digest());
         // Horse güncellemeleri burada yapýlacak
     }
 
-    public RacePhase SetRacePhase(float raceTime)
+    private float CalculateSpeedByEnergy()
     {
-        if (raceTime <= 20)
-        {
-            return RacePhase.Start;
-        }
-        else if (raceTime > 20 && raceTime <= 40)
-        {
-            return RacePhase.Race;
-        }
-        else
-        {
-            return RacePhase.Finish;
-
-        }
+        float normalizedEnergy = Mathf.Clamp01(metabolismSystem.Energy);
+        return normalizedEnergy * maxSpeed; 
     }
+
+    public void FeedHorse(NutritionSO so)
+    {
+        metabolismSystem.AddNutrition(so);
+    }
+
 }
