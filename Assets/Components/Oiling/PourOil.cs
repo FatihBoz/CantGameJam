@@ -22,7 +22,7 @@ public class DraggablePour : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (Input.GetMouseButton(0) && oilAmount>0) // Sol tıkla drag başlar
+        if (Input.GetMouseButton(0)) // Sol tıkla drag başlar
         {
             Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             offset = transform.position - new Vector3(mousePos.x, mousePos.y, transform.position.z);
@@ -60,16 +60,13 @@ public class DraggablePour : MonoBehaviour
         if (oilAmount>0)
         {
            
-        oilAmount -= Time.deltaTime*10; // Her tıklamada yağ miktarını azalt
-        Debug.Log($"{gameObject.name} is POURING!");
-        pourEffect.Play();
+            oilAmount -= Time.deltaTime*10; // Her tıklamada yağ miktarını azalt
+            Debug.Log($"{gameObject.name} is POURING!");
+            pourEffect.Play();
 
         }
         else
         {
-            isDragging = false;
-            transform.position = startPos; // Eski pozisyona dön
-            transform.eulerAngles = startRotation;
             pourEffect.Stop();
         }
     }
