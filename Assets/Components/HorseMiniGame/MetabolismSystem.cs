@@ -15,6 +15,8 @@ public class MetabolismSystem
 
     public float Energy { get; private set; }
 
+    bool isDigesting = false;
+
     public MetabolismSystem(MetabolismView view)
     {
         this.view = view;
@@ -38,8 +40,6 @@ public class MetabolismSystem
     {
         view.UpdateView(storageModel, Energy);
     }
-
-    bool isDigesting = false;
 
     public IEnumerator Digest()
     {
@@ -65,7 +65,7 @@ public class MetabolismSystem
     }
 
     //Update'de deðil de eventlerle çalýþtýrmak lazým.
-    public void SelectNutrient(RacePhase racePhase)
+    public void SelectNutrientType(RacePhase racePhase)
     {
         if(currentUsingNutrient != null)
         {
@@ -114,5 +114,21 @@ public class MetabolismSystem
             currentUsingNutrient = null; // Reset to allow selection of a new nutrient
         }
         UpdateViewFromModel();
+    }
+
+    public bool ConsumeEnergy(float amount)
+    {
+        if (Energy >= amount)
+        {
+            Energy -= amount;
+            UpdateViewFromModel(); // UI güncelle
+            return true; // Enerji baþarýyla kullanýldý
+        }
+        else
+        {
+            Energy = 0f;
+            UpdateViewFromModel();
+            return false; // Yeterli enerji yok
+        }
     }
 }
