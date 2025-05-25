@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 
@@ -69,6 +70,11 @@ public class NotificationSystem : MonoBehaviour
 
     private void Update()
     {
+        if (currentGameCountdown<=0 && isInGame)
+        {
+            SceneManager.LoadScene(0);
+        }
+
         if (currentGameCountdown>=0 && isInGame)
         {
             currentGameCountdown -= Time.deltaTime;
