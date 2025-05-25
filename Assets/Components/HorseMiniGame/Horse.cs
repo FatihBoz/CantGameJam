@@ -1,45 +1,38 @@
 using UnityEngine;
 
-public class Horse : MonoBehaviour
+public class Horse: MonoBehaviour
 {
-    [SerializeField] HorseView view;
-    [SerializeField] MetabolismView metabolismView;
+    HorseModel model;
+    public HorseModel Model => model;
 
-    private HorseModel model;
-    private CiritBehavior ciritBehavior;
+    ////NutrientStorage nutrientStorage;
+    ////public NutrientStorage NutrientStorage => nutrientStorage;
 
-    private void Start()
+    private void Awake()
     {
-        model = new HorseModel(metabolismView);
-
-    }
-
-    public void HandleDigestion()
-    {
-        model.MetabolismSystem.SelectNutrientType(RaceManager.Instance.CurrentRacePhase);
-    }
-
-    public void FeedHorse(NutritionSO so)
-    {
-        model.MetabolismSystem.AddNutrition(so);
-    }
-
-    public void AssignHorseShoe(HorseShoeType shoeType)
-    {
-        model.HorseShoeType = shoeType;
+        model = new HorseModel();
     }
 
     public void CalculateScores()
     {
-        model.AttackScore = ciritBehavior.CalculateAttackScore(model.MetabolismSystem.storageModel, model.Speed);
-        model.DefenseScore = ciritBehavior.CalculateDefenseScore(model.Speed, model.Weight);
+        model.AttackScore = CalculateAttackScore(model.Stamina);
+        model.DefenseScore = CalculateDefenseScore(model.Speed, model.Weight);
     }
 
-    public void CalculateWeight()
+    public float CalculateAttackScore(float Stamina)
     {
-        model.CalculateWeight();
+        float attackScore = 0f;
+        float protein = model.NutrientStorage.Protein.Amount;
+
+        return attackScore + (protein * 0.5f) + (Stamina * 0.3f);
     }
 
+    public float CalculateDefenseScore(float speed, float weight)
+    {
+        float defenseScore = 0f;
+
+        return defenseScore + (speed * 0.5f) + (weight * 0.3f);
+    }
+
+    //   CiritBehavior ciritBehavior;
 }
-
-

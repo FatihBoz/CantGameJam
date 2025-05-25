@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hay
   m_EditorClassIdentifier: 
   carbohydrate:
-    amount: 50
+    amount: 5
   fat:
     amount: 5
   protein:

@@ -5,9 +5,9 @@ public class CiritBattle : MonoBehaviour
 {
 
 
-    void HandleCiritAttack(HorseModel attackerHorse, HorseModel dodgerHorse)
+    void HandleCiritAttack(Horse attackerHorse, Horse dodgerHorse)
     {
-        if(attackerHorse.AttackScore > dodgerHorse.DefenseScore)
+        if(attackerHorse.Model.AttackScore > dodgerHorse.Model.DefenseScore)
         {
             //attackerHorse.teamColor.AddScore(attackerHorse.AttackScore - dodgerHorse.DefenseScore);
         }
