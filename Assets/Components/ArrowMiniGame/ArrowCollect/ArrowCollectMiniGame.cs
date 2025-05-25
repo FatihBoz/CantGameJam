@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArrowCollectMiniGame : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class ArrowCollectMiniGame : MonoBehaviour
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private List<RectTransform> intantiateTransforms;
     [SerializeField] private int arrowCountToFinishMiniGame = 5;
-
+    [SerializeField] private Image tick;
 
     [Header("Middle Point")]
     [SerializeField] private RectTransform middlePoint;
@@ -35,6 +36,12 @@ public class ArrowCollectMiniGame : MonoBehaviour
         }
     }
 
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
+
     public void OnArrowCollected(ArrowToCollect arrow)
     {
         arrowCountToFinishMiniGame--;
@@ -42,7 +49,7 @@ public class ArrowCollectMiniGame : MonoBehaviour
 
         if (arrowCountToFinishMiniGame <= 0)
         {
-            
+            tick.gameObject.SetActive(true);
             // Mini Game Finished
         }
     }

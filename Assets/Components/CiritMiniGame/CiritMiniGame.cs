@@ -63,6 +63,12 @@ public class CiritMiniGame : MonoBehaviour
     }
 
 
+
+    public void DESTROY()
+    {
+        Destroy(gameObject);
+    }
+
     GameObject GetRandomCirit()
     {
         int r = Random.Range(0,ciritPrefabs.Count);

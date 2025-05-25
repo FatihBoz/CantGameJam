@@ -4,6 +4,7 @@ using UnityEngine;
 public class ShotCleanMiniGame : MonoBehaviour
 {
     [SerializeField] private int shotCountToFinish = 3;
+    [SerializeField] private GameObject tick;
     int currShot = 0;
     List<Shot> currentShots = new();
 
@@ -20,6 +21,7 @@ public class ShotCleanMiniGame : MonoBehaviour
         {
             if (AllShotsAreClean())
             {
+                tick.SetActive(true);
                 print("level completed");
                 //LEVEL COMPLETED
             }
@@ -45,6 +47,11 @@ public class ShotCleanMiniGame : MonoBehaviour
     {
 
         CleanShotSpot.OnShotPlaced -= OnShotPlace;
+    }
+
+    public void DESTROY()
+    {
+        Destroy(gameObject);
     }
 
 }

@@ -38,6 +38,7 @@ public class Trash : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointer
                 miniGameCanBeFinished = true;
                 finishButton.gameObject.SetActive(true);
 
+
             }
         }
     }
