@@ -32,11 +32,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5897762750174270770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -171.20459, y: -134.9}
-  m_SizeDelta: {x: 383.5906, y: 40.4005}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 34, y: -30.7}
+  m_SizeDelta: {x: 272.4622, y: 40.4005}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8971992946125722757
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -382,11 +382,11 @@ RectTransform:
   - {fileID: 2718835786089097701}
   m_Father: {fileID: 8991096260457045036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 838, y: -2.5383}
-  m_SizeDelta: {x: 772.6846, y: 222.0551}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 373.2214, y: 184.293}
+  m_Pivot: {x: 1, y: 1}
 --- !u!222 &318736016181882016
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -546,13 +546,34 @@ MonoBehaviour:
   totalGameList:
   - gameName: "Ya\u011Flama"
     isGameFinished: 0
+    uiOrScene: 0
+    uiMiniGameType: 0
+    scene: 
   - gameName: "Ya\u011F haz\u0131rlama"
     isGameFinished: 0
+    uiOrScene: 0
+    uiMiniGameType: 0
+    scene: 
+  nextGame:
+    gameName: 
+    isGameFinished: 0
+    uiOrScene: 0
+    uiMiniGameType: 4
+    scene: 
+  curGame:
+    gameName: 
+    isGameFinished: 0
+    uiOrScene: 0
+    uiMiniGameType: 4
+    scene: 
+  curGamePanel: {fileID: 2259440462628712396}
+  curGameCountdownText: {fileID: 131354530321949966}
   currentGameCountdown: 0
   isNextGameReady: 0
   nextGameCountdown: 0
   notificationTitleText: {fileID: 6602330676649395431}
   countdownText: {fileID: 9047948056570703943}
+  notificatonFreq: 25
 --- !u!1 &7843095437003539932
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,11 +606,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5897762750174270770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -171.20459, y: -56}
-  m_SizeDelta: {x: 383.5906, y: 40.4005}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 34, y: 45.9}
+  m_SizeDelta: {x: 288.646, y: 40.4005}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6863458759381377790
 CanvasRenderer:
   m_ObjectHideFlags: 0
