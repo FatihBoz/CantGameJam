@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OilingFinishCheck : MonoBehaviour
 {
@@ -56,7 +57,7 @@ public class OilingFinishCheck : MonoBehaviour
     public void RealFinish()
     {
         NotificationSystem.Instance.ReturnToMainMenu();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
 
     }
 }

@@ -35,15 +35,14 @@ public class NotificationSystem : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-            curGamePanel.gameObject.SetActive(false);
-
         }
+        DontDestroyOnLoad(gameObject);
+        curGamePanel.gameObject.SetActive(false);
     }
     void Start()
     {
@@ -54,7 +53,7 @@ public class NotificationSystem : MonoBehaviour
     {
         SelectNextGame();
         notificationPanel.gameObject.SetActive(true);
-        notificationPanel.DOAnchorPosX(0, .2f).SetEase(Ease.InOutCubic).OnComplete(() =>
+        notificationPanel.DOAnchorPosX(-415.8324f, .2f).SetEase(Ease.InOutCubic).OnComplete(() =>
         {
            
         });
@@ -123,6 +122,7 @@ public class NotificationSystem : MonoBehaviour
         curGame = nextGame;
         currentGameCountdown = nextGameCountdown;
         isNextGameReady = false;
+        nextGame = null;
         notificatonFreq = 25f;
         return true;
     }
@@ -130,7 +130,11 @@ public class NotificationSystem : MonoBehaviour
     {
         isInGame = false;
         curGamePanel.gameObject.SetActive(false);
+        if (!isNextGameReady)
+        {
+            ShowNotification();
+        }
 
-}
+    }
 
 }
