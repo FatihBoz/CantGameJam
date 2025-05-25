@@ -20,12 +20,6 @@ public class PlayerHorse: Horse
 
     }
 
-    /*
-    public void HandleDigestion()
-    {
-        metabolismSystem.SelectNutrientType(RaceManager.Instance.CurrentRacePhase);
-    }
-    */
 
     public void FeedHorse(NutritionSO so)
     {

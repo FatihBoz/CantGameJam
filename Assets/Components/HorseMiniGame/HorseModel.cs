@@ -32,10 +32,14 @@ public class HorseModel
         Weight += nutrientStorage.Protein.Amount * 0.1f +
                   nutrientStorage.Fat.Amount * 0.05f +
                   nutrientStorage.Carbonhydrate.Amount * 0.02f;
+
+        OnHorseDataChanged?.Invoke();
     }
 
     public void AssignHorseShoe(HorseShoeType shoeType)
     {
         HorseShoeType = shoeType;
+
+        OnHorseDataChanged?.Invoke();
     }
 }

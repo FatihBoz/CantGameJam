@@ -96,5 +96,14 @@ public class HorseAssignerUI : MonoBehaviour
     {
         horseView.gameObject.SetActive(!horseView.gameObject.activeSelf);
         nutritionView.gameObject.SetActive(!nutritionView.gameObject.activeSelf);
+
+        UpdateHorseStats();
+    }
+
+    private void UpdateHorseStats()
+    {
+        PlayerHorse currentHorse = horseList[currentIndex];
+        currentHorse.CalculateScores(); // skorlarý hesapla
+        horseView.UpdateStatsUI(currentHorse.Model); // UI'ý güncelle
     }
 }
