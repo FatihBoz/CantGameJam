@@ -6,7 +6,7 @@ public class HorseModel
 {
     public float Speed { get; set; } = 10f;
     public float Weight { get; set; } = 10f;
-    public float Stamina { get; set; } = 100f;
+    public float Stamina { get; set; } = 10f;
     public float AttackScore { get; set; }
     public float DefenseScore { get; set; }
     public HorseShoeType HorseShoeType { get; set; } = HorseShoeType.Plain;
