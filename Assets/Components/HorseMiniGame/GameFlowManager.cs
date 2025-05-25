@@ -4,6 +4,21 @@ using UnityEngine.UI;
 
 public class GameInitializer : MonoBehaviour
 {
+    //Make this class singleton
+    public static GameInitializer Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     [SerializeField] private Button applyButton;
     [SerializeField] private string battleSceneName = "BattleScene";
 
@@ -16,6 +31,8 @@ public class GameInitializer : MonoBehaviour
         }
 
         applyButton.onClick.AddListener(OnApplyButtonPressed);
+
+
     }
 
     void OnApplyButtonPressed()
@@ -28,4 +45,9 @@ public class GameInitializer : MonoBehaviour
         // Tüm veriler hazýr, sahneyi deðiþtir
         SceneManager.LoadScene(battleSceneName);
     }
+
+    [SerializeField] private Text playerStatsText;
+    [SerializeField] private Text enemyStatsText;
+
+
 }

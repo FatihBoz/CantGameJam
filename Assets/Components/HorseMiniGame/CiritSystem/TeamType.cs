@@ -46,6 +46,31 @@ public class TeamType
     {
         return horseTeamList;
     }
+
+    public float GetTotalAttackScore()
+    {
+        float total = 0f;
+        foreach (GameObject horseObj in horseTeamList)
+        {
+            Horse horse = horseObj.GetComponent<Horse>();
+            if (horse != null)
+                total += horse.Model.AttackScore;
+        }
+        return total;
+    }
+
+    public float GetTotalDefenseScore()
+    {
+        float total = 0f;
+        foreach (GameObject horseObj in horseTeamList)
+        {
+            Horse horse = horseObj.GetComponent<Horse>();
+            if (horse != null)
+                total += horse.Model.DefenseScore;
+        }
+        return total;
+    }
+
 }
 
 public enum TeamColor
