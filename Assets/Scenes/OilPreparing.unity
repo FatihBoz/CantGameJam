@@ -723,7 +723,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 13}
+  m_AnchoredPosition: {x: 0, y: 3.800003}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &773162482
@@ -746,12 +746,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'GONDER
-
-'
+  m_text: "G\xD6NDER"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c8d6a5e417a10a6458c53ad72fcaea4c, type: 2}
-  m_sharedMaterial: {fileID: -4805196603198252580, guid: c8d6a5e417a10a6458c53ad72fcaea4c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: da30c4107f0641245937cd4b19cad72b, type: 2}
+  m_sharedMaterial: {fileID: -1385012033805085937, guid: da30c4107f0641245937cd4b19cad72b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -781,7 +779,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2084,7 +2082,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -25
   m_Sprite: {fileID: -190786219331728566, guid: 4c6a3e69372df614084de2d59926ffd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2936,7 +2934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 6}
+  m_AnchoredPosition: {x: 0, y: 1.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983183338
@@ -2963,8 +2961,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c8d6a5e417a10a6458c53ad72fcaea4c, type: 2}
-  m_sharedMaterial: {fileID: -4805196603198252580, guid: c8d6a5e417a10a6458c53ad72fcaea4c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: da30c4107f0641245937cd4b19cad72b, type: 2}
+  m_sharedMaterial: {fileID: -1385012033805085937, guid: da30c4107f0641245937cd4b19cad72b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2994,7 +2992,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

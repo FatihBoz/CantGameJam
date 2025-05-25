@@ -42,6 +42,11 @@ public class HandPositioner : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (OilingFinishCheck.Instance.IsFullOilingFinished())
+        {
+            LeaveHand();
+            return;
+        }
         if (Input.GetMouseButton(0)) // Sol tıkla drag başlar
         {
             handing = true;
@@ -60,6 +65,11 @@ public class HandPositioner : MonoBehaviour
     }
     void Update()
     {
+        if (OilingFinishCheck.Instance.IsFullOilingFinished())
+        {
+            LeaveHand();
+            return;
+        }
         if (handing)
         {
             Movement();
