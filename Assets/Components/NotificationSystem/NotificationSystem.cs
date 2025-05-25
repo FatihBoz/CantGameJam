@@ -67,12 +67,14 @@ public class NotificationSystem : MonoBehaviour
         });
 
     }
-
     private void Update()
     {
         if ((currentGameCountdown <= 0 && isInGame) || (isNextGameReady && nextGameCountdown<=0))
         {
+            HideNotification();
             SceneManager.LoadScene(0);
+            Instance = null;
+            Destroy(this.gameObject);
         }
 
         if (currentGameCountdown>=0 && isInGame)
