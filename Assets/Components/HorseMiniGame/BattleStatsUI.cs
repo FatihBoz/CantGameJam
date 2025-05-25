@@ -1,10 +1,13 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class BattleStatsUI : MonoBehaviour
 {
-    [SerializeField] private Text playerStatsText;
-    [SerializeField] private Text enemyStatsText;
+    [SerializeField] private TextMeshProUGUI playerStatsText;
+    [SerializeField] private TextMeshProUGUI enemyStatsText;
 
     void Start()
     {
@@ -14,16 +17,15 @@ public class BattleStatsUI : MonoBehaviour
             return;
         }
 
-        TeamType playerTeam = TeamManager.Instance.GetTeamByColor(TeamColor.Red);
-        TeamType enemyTeam = TeamManager.Instance.GetTeamByColor(TeamColor.Blue);
+        playerStatsText.text = $"PLAYER TEAM\nAttack: {TeamManager.Instance.playerAttack:F1}\nDefense: {TeamManager.Instance.playerDefense:F1}";
+        enemyStatsText.text = $"ENEMY TEAM\nAttack: {TeamManager.Instance.enemyAttack:F1}\nDefense: {TeamManager.Instance.enemyDefense:F1}";
 
-        float playerAttack = playerTeam.GetTotalAttackScore();
-        float playerDefense = playerTeam.GetTotalDefenseScore();
+        StartCoroutine(GoToMainMenuAfterDelay(3f));
+    }
 
-        float enemyAttack = enemyTeam.GetTotalAttackScore();
-        float enemyDefense = enemyTeam.GetTotalDefenseScore();
-
-        playerStatsText.text = $"PLAYER TEAM\nAttack: {playerAttack:F1}\nDefense: {playerDefense:F1}";
-        enemyStatsText.text = $"ENEMY TEAM\nAttack: {enemyAttack:F1}\nDefense: {enemyDefense:F1}";
+    private IEnumerator GoToMainMenuAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("MainMenu");
     }
 }

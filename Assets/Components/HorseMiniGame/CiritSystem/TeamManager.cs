@@ -10,6 +10,14 @@ public class TeamManager : MonoBehaviour
 
     public List<TeamType> teams = new List<TeamType>();
 
+    public float playerAttack;
+    public float playerDefense;
+
+    public float enemyAttack;
+    public float enemyDefense;
+
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -86,7 +94,7 @@ public class TeamManager : MonoBehaviour
             if (enemyHorse != null)
             {
                 enemyTeam.AddHorse(enemyHorse.gameObject);
-                enemyHorse.PrintStats();
+                //enemyHorse.PrintStats();
 
             }
         }
@@ -106,4 +114,46 @@ public class TeamManager : MonoBehaviour
         
         return horses;
     }
+
+    public void Calculate()
+    {
+        TeamType playerTeam = GetTeamByColor(TeamColor.Red);
+        TeamType enemyTeam = GetTeamByColor(TeamColor.Blue);
+
+        playerAttack = playerTeam.GetTotalAttackScore();
+        playerDefense = playerTeam.GetTotalDefenseScore();
+
+        enemyAttack = enemyTeam.GetTotalAttackScore();
+        enemyDefense = enemyTeam.GetTotalDefenseScore();
+
+        Debug.Log("=== PLAYER TEAM STATS ===");
+        PrintHorseStats(playerTeam);
+
+        Debug.Log("=== ENEMY TEAM STATS ===");
+        PrintHorseStats(enemyTeam);
+
+        Debug.Log($"Toplam -> Player Attack: {playerAttack}, Player Defense: {playerDefense}");
+        Debug.Log($"Toplam -> Enemy Attack: {enemyAttack}, Enemy Defense: {enemyDefense}");
+    }
+
+    private void PrintHorseStats(TeamType team)
+    {
+        List<GameObject> horses = team.GetHorseList();
+        for (int i = 0; i < horses.Count; i++)
+        {
+            GameObject horseObj = horses[i];
+            Horse horse = horseObj.GetComponent<Horse>();
+            if (horse != null)
+            {
+                Debug.Log(
+                    $"{team.TeamColor} - Horse #{i + 1} -> " +
+                    $"Attack: {horse.Model.AttackScore}, Defense: {horse.Model.DefenseScore}");
+            }
+            else
+            {
+                Debug.LogWarning($"{team.TeamColor} takýmýndaki Horse #{i + 1} nesnesinde 'Horse' bileþeni yok!");
+            }
+        }
+    }
+
 }

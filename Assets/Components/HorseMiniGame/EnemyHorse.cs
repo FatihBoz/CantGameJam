@@ -3,6 +3,12 @@ using UnityEngine;
 public class EnemyHorse : Horse
 {
 
+    private void Start()
+    {
+        RandomizeStats();
+        PrintStats();
+    }
+
     public void RandomizeStats()
     {
         Model.Speed = Random.Range(5f, 20f);

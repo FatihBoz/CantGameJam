@@ -43,6 +43,8 @@ public class GameInitializer : MonoBehaviour
         // AssignEnemyTeamHorses zaten Awake'te çaðrýlýyor ama istenirse burada da çaðrýlabilir
 
         // Tüm veriler hazýr, sahneyi deðiþtir
+        TeamManager.Instance.Calculate();
+
         SceneManager.LoadScene(battleSceneName);
     }
 
