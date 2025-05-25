@@ -66,6 +66,7 @@ public class CiritMiniGame : MonoBehaviour
 
     public void DESTROY()
     {
+        NotificationSystem.Instance.ReturnToMainMenu();
         Destroy(gameObject);
     }
 

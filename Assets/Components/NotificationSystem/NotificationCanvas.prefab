@@ -544,16 +544,21 @@ MonoBehaviour:
   isInGame: 0
   notificationPanel: {fileID: 5897762750174270770}
   totalGameList:
-  - gameName: "Ya\u011Flama"
+  - gameName: Arrow Collecting
     isGameFinished: 0
     uiOrScene: 0
     uiMiniGameType: 0
     scene: 
+  - gameName: "G\xFCre\u015F\xE7i ya\u011Fla"
+    isGameFinished: 0
+    uiOrScene: 1
+    uiMiniGameType: 4
+    scene: GuresYag
   - gameName: "Ya\u011F haz\u0131rlama"
     isGameFinished: 0
-    uiOrScene: 0
-    uiMiniGameType: 0
-    scene: 
+    uiOrScene: 1
+    uiMiniGameType: 4
+    scene: OilPreparing
   nextGame:
     gameName: 
     isGameFinished: 0

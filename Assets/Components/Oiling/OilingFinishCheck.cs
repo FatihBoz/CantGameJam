@@ -53,4 +53,10 @@ public class OilingFinishCheck : MonoBehaviour
     {
         return isFrontOilingFinished && isBackOilingFinished;
     }
+    public void RealFinish()
+    {
+        NotificationSystem.Instance.ReturnToMainMenu();
+        SceneManager.LoadScene(0);
+
+    }
 }

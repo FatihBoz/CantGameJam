@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Katman 15_0: -7248559446161484840
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
