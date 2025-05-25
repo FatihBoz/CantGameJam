@@ -5,70 +5,96 @@ using UnityEngine.UI;
 public class HorseAssignerUI : MonoBehaviour
 {
     [Header("HorseView")]
-    public GameObject HorseView;
+    [SerializeField] private HorseView horseView;
 
-    [Header("HorseObject")]
-    public GameObject HorseObject;
+    [Header("MetabolismView")]
+    [SerializeField] private NutritionView nutritionView;
 
     [Header("UI Buttons")]
     public Button leftButton;
     public Button rightButton;
+    public Button changeUIButton;
 
-    private List<Transform> children1 = new List<Transform>();
-    private List<Transform> children2 = new List<Transform>();
+    [Header("Horse Parent")]
+    [SerializeField] private Transform horseParent;
+
     private int currentIndex = 0;
+    private List<PlayerHorse> horseList = new List<PlayerHorse>();
 
     void Start()
     {
-        if (HorseView == null || HorseObject == null)
+        if (horseView == null || nutritionView == null || horseParent == null)
         {
-            Debug.LogError("Parent objeler eksik!");
+            Debug.LogError("Eksik referanslar: horseView, nutritionView veya horseParent atanmadý!");
             return;
         }
-
-        InitializeChildren(HorseView, children1);
-        InitializeChildren(HorseObject, children2);
-
-        if (children1.Count != children2.Count)
-        {
-            Debug.LogError("Ýki parent'ýn çocuk sayýsý eþit olmalý!");
-            return;
-        }
-
-        SetActiveAtIndex(currentIndex);
 
         leftButton.onClick.AddListener(MoveLeft);
         rightButton.onClick.AddListener(MoveRight);
+        changeUIButton.onClick.AddListener(ChangeUIView);
+
+        // Parent altýndaki PlayerHorse'larý listeye al
+        horseList = new List<PlayerHorse>(horseParent.GetComponentsInChildren<PlayerHorse>());
+
+        print($"Toplam {horseList.Count} adet PlayerHorse bulundu.");
+
+        if (horseList.Count == 0)
+        {
+            Debug.LogWarning("horseParent altýnda hiç PlayerHorse bulunamadý!");
+            return;
+        }
+
+        UpdateHorseView();
     }
 
-    void InitializeChildren(GameObject parent, List<Transform> list)
+    public void ShowHorseDetails(HorseModel model)
     {
-        foreach (Transform child in parent.transform)
+        horseView.UpdateStatsUI(model);
+        nutritionView.UpdateView(model.NutrientStorage, model.Stamina); // enerji yoksa þimdilik sadece storage gönder
+
+        model.OnHorseDataChanged += () =>
         {
-            list.Add(child);
-            child.gameObject.SetActive(false);
+            horseView.UpdateStatsUI(model);
+            nutritionView.UpdateView(model.NutrientStorage, model.Stamina);
+        };
+    }
+
+    public void MoveLeft()
+    {
+        currentIndex--;
+        if (currentIndex < 0)
+        {
+            currentIndex = horseList.Count - 1;
+        }
+        UpdateHorseView();
+    }
+
+    public void MoveRight()
+    {
+        currentIndex++;
+        if (currentIndex >= horseList.Count)
+        {
+            currentIndex = 0;
+        }
+        UpdateHorseView();
+    }
+
+    private void UpdateHorseView()
+    {
+        Debug.Log("currentIndex: " + currentIndex);
+
+        PlayerHorse currentHorse = horseList[currentIndex];
+        ShowHorseDetails(currentHorse.Model);
+
+        for (int i = 0; i < horseParent.childCount; i++)
+        {
+            horseParent.GetChild(i).gameObject.SetActive(i == currentIndex);
         }
     }
 
-    void SetActiveAtIndex(int index)
+    public void ChangeUIView()
     {
-        for (int i = 0; i < children1.Count; i++)
-        {
-            children1[i].gameObject.SetActive(i == index);
-            children2[i].gameObject.SetActive(i == index);
-        }
+        horseView.gameObject.SetActive(!horseView.gameObject.activeSelf);
+        nutritionView.gameObject.SetActive(!nutritionView.gameObject.activeSelf);
     }
-
-    void MoveRight()
-    {
-        currentIndex = (currentIndex + 1) % children1.Count;
-        SetActiveAtIndex(currentIndex);
-    }
-
-    void MoveLeft()
-    {
-        currentIndex = (currentIndex - 1 + children1.Count) % children1.Count;
-        SetActiveAtIndex(currentIndex);
-    }
-
 }

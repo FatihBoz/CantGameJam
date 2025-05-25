@@ -7,26 +7,19 @@ public class MetabolismSystem
 {
     public NutrientStorage storageModel;
 
-    MetabolismView metabolismView;
-
     Nutrient currentUsingNutrient;
+
 
     float energy;
     public float Energy { get; private set; }
 
     bool isDigesting = false;
 
-    public MetabolismSystem(MetabolismView metabolismView)
+    public MetabolismSystem(Horse horse)
     {
-        this.metabolismView = metabolismView;
-        Start();
-    }
+        storageModel = horse.Model.NutrientStorage;
+        //storageModel.OnValuesChanged += UpdateViewFromModel;
 
-    private void Start()
-    {
-        storageModel = new NutrientStorage();
-        storageModel.OnValuesChanged += UpdateViewFromModel;
-        UpdateViewFromModel(); // ilk açýlýþta senkronize et
     }
 
     public void AddNutrition(NutritionSO type)
@@ -34,11 +27,7 @@ public class MetabolismSystem
         storageModel.Add(type);
     }
 
-    private void UpdateViewFromModel()
-    {
-        metabolismView.UpdateView(storageModel, Energy);
-    }
-
+    /*
     public IEnumerator Digest()
     {
         if (isDigesting || currentUsingNutrient == null)
@@ -54,7 +43,6 @@ public class MetabolismSystem
         while (currentUsingNutrient != null && currentUsingNutrient.Amount > 0)
         {
             Consume(currentUsingNutrient);
-            UpdateViewFromModel();
             yield return new WaitForSeconds(delay);
         }
 
@@ -62,6 +50,7 @@ public class MetabolismSystem
         isDigesting = false;
     }
 
+    
     //Update'de deðil de eventlerle çalýþtýrmak lazým.
     public void SelectNutrientType(RacePhase racePhase)
     {
@@ -129,4 +118,5 @@ public class MetabolismSystem
             return false; // Yeterli enerji yok
         }
     }
+    */
 }
