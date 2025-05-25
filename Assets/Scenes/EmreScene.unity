@@ -644,6 +644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d96b1cca0212842ac42393ed23208e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minRaceTime: 40
+  maxRaceTime: 80
 --- !u!4 &1307084300
 Transform:
   m_ObjectHideFlags: 0
@@ -671,6 +673,7 @@ GameObject:
   - component: {fileID: 1867888233}
   - component: {fileID: 1867888232}
   - component: {fileID: 1867888235}
+  - component: {fileID: 1867888236}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -796,6 +799,22 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1867888236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867888231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaf61612ab2cdf478d2620417c3c5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  borderThickness: 10
+  minPosition: {x: -100, y: -100}
+  maxPosition: {x: 100, y: 100}
 --- !u!1 &1890772579
 GameObject:
   m_ObjectHideFlags: 0
