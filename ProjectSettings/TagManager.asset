@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Dirty
+  - MixDragging
   layers:
   - Default
   - TransparentFX
