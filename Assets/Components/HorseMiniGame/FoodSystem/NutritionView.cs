@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MetabolismView : MonoBehaviour
+public class NutritionView : MonoBehaviour
 {
     public Image carbSlider;
     public Image fatSlider;
@@ -10,13 +10,13 @@ public class MetabolismView : MonoBehaviour
     public Image energySlider;
 
 
-    public void UpdateView(NutrientStorage storage, float energy)
+    public void UpdateView(NutrientStorage storage, float stamina)
     {
         UpdateSlider(carbSlider, storage.GetCarbRatio(), "Carbs");
         UpdateSlider(fatSlider, storage.GetFatRatio(), "Fats");
         UpdateSlider(proteinSlider, storage.GetProteinRatio(), "Proteins");
 
-        UpdateSlider(energySlider, energy, "Energy"); // energy doðrudan gelen oran
+        UpdateSlider(energySlider, stamina, "Stamina"); // energy doðrudan gelen oran
     }
 
     private void UpdateSlider(Image slider, float ratio, string label)

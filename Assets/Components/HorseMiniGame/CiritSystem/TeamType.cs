@@ -3,47 +3,52 @@ using UnityEngine;
 
 public class TeamType
 {
-    float maxHorseCount = 5f;
+    private const int MaxHorseCount = 5;
 
-    Queue<Horse> horseTeamQueue = new Queue<Horse>();
-    
-    TeamColor teamColor;
+    private List<PlayerHorse> horseTeamList = new List<PlayerHorse>();
+
+    private TeamColor teamColor;
     public TeamColor TeamColor => teamColor;
 
-    float scorePoint= 0f;
+    private float scorePoint = 0f;
     public float ScorePoint => scorePoint;
+
+    public TeamType(TeamColor teamColor)
+    {
+        this.teamColor = teamColor;
+    }
 
     public void AddScore(float score)
     {
         scorePoint += score;
     }
 
-    public TeamType(TeamColor teamColor)
+    public void AddHorse(PlayerHorse horse)
     {
-        this.teamColor = teamColor;
-
-        if(teamColor == TeamColor.Blue)
+        if (horseTeamList.Count >= MaxHorseCount)
         {
-            AddHorseToQueue(new Horse()); // Example of adding a horse to the enemy team
+            Debug.LogWarning("Takýmda maksimum sayýda at var!");
+            return;
+        }
+
+        horseTeamList.Add(horse);
+    }
+
+    public void RemoveHorse(PlayerHorse horse)
+    {
+        if (horseTeamList.Contains(horse))
+        {
+            horseTeamList.Remove(horse);
         }
     }
 
-    public void AddHorseToQueue(Horse horse)
+    public List<PlayerHorse> ReturnHorseQueueAsList()
     {
-        horseTeamQueue.Enqueue(horse);
+        Debug.Log($"Team {teamColor} has {horseTeamList.Count} horses.");
+        return new List<PlayerHorse>(horseTeamList);
     }
-
-    public void RemoveHorseFromQueue(Horse horse)
-    {
-        if (horseTeamQueue.Count > 0 && horseTeamQueue.Peek() == horse)
-        {
-            horseTeamQueue.Dequeue();
-        }
-    }
-
-
-
 }
+
 public enum TeamColor
 {
     //Red is Player's team, Blue is Enemy's team

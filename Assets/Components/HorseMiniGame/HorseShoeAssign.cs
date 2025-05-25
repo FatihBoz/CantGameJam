@@ -29,22 +29,23 @@ public class HorseShoeAssign : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
 
-        RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+        Collider2D col = Physics2D.OverlapPoint(mousePos2D);
 
         Debug.DrawRay(mousePos2D, Vector2.up * 0.1f, Color.red, 1f);
 
-        if (hit.collider != null)
+        if (col != null)
         {
-            Horse horse = hit.collider.GetComponent<Horse>();
+            PlayerHorse horse = col.GetComponent<PlayerHorse>();
 
             if (horse != null)
             {
-                horse.AssignHorseShoe(horseShoeType);
-                Destroy(gameObject); // Yem tüketildi
+                horse.Model.AssignHorseShoe(horseShoeType);
+                transform.position = originalPosition;
                 return;
             }
         }
         transform.position = originalPosition;
+
     }
 }
 

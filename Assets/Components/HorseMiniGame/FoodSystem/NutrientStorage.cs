@@ -14,7 +14,7 @@ public class NutrientStorage
     private float maxFat;
     private float maxProtein;
 
-    public NutrientStorage(float maxCarbs = 1f, float maxFats = 1f, float maxProteins = 1f)
+    public NutrientStorage(float maxCarbs = 100f, float maxFats = 100f, float maxProteins = 100f)
     {
         Carbonhydrate = new Nutrient(NutrientType.Carbohydrate);
         Fat = new Nutrient(NutrientType.Fat);
@@ -23,6 +23,8 @@ public class NutrientStorage
         maxCarbohydrate = Mathf.Max(0.01f, maxCarbs);
         maxFat = Mathf.Max(0.01f, maxFats);
         maxProtein = Mathf.Max(0.01f, maxProteins);
+
+        OnValuesChanged?.Invoke();
     }
 
     public void Add(NutritionSO type)
@@ -39,6 +41,7 @@ public class NutrientStorage
         Carbonhydrate.Amount = UnityEngine.Random.Range(0f, maxCarbohydrate);
         Fat.Amount = UnityEngine.Random.Range(0f, maxFat);
         Protein.Amount = UnityEngine.Random.Range(0f, maxProtein);
+
         OnValuesChanged?.Invoke();
     }
 
