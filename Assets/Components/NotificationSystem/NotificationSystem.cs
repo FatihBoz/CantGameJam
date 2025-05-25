@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 
@@ -69,6 +70,11 @@ public class NotificationSystem : MonoBehaviour
 
     private void Update()
     {
+        if (currentGameCountdown<=0 && isInGame)
+        {
+            SceneManager.LoadScene(0);
+        }
+
         if (currentGameCountdown>=0 && isInGame)
         {
             currentGameCountdown -= Time.deltaTime;
@@ -96,7 +102,7 @@ public class NotificationSystem : MonoBehaviour
         isNextGameReady = true;
         nextGame = totalGameList[Random.Range(0, totalGameList.Count)];
         notificationTitleText.text = nextGame.gameName;
-        nextGameCountdown = 60f;
+        nextGameCountdown = 90f;
     }
     public bool LoadNextGame(bool type, UiMiniGameType uiType, string sceneName)
     {
