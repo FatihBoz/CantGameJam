@@ -19,9 +19,6 @@ public class OilingManager : MonoBehaviour
     public TMP_Text oilCountText;
     public TMP_Text rubCountText;
 
-    public Sprite[] backFaces;
-    public Sprite[] frontFaces;
-
     void Awake()
     {
         oilGrid = new bool[gridSizeX, gridSizeY];
@@ -59,58 +56,32 @@ public class OilingManager : MonoBehaviour
         tempColor.a = Mathf.Clamp01((float)filledCount / (gridSizeX * gridSizeY));
         secondSpriteRenderer.color = tempColor; // İkinci sprite renderer'ın rengini güncelle
 
-        oilCountText.text = "%"+(tempColor.a * 100).ToString();
+        oilCountText.text = "%"+(int)(tempColor.a * 100);
+
+
+
 
     }
     public void RubOil(float amount)
     {
-        if (GetIsFullfilled())
-        {
             Debug.Log("calisiy");
             Color tempColor = thirdSpriteRenderer.color;
 
             tempColor.a += amount;
-            tempColor.a = Mathf.Clamp01(tempColor.a);
-            thirdSpriteRenderer.color = tempColor; // İkinci sprite renderer'ın rengini güncelle
+            tempColor.a = Mathf.Clamp(tempColor.a,0, (float)filledCount / (gridSizeX * gridSizeY));
+            thirdSpriteRenderer.color = tempColor;
 
+            rubCountText.text = "%" + (int)(thirdSpriteRenderer.color.a * 100);
+    }
+    private void OnEnable()
+    {
             rubCountText.text = "%" + (thirdSpriteRenderer.color.a * 100);
-        }
-    }
-
-    public void SwitchToFront()
-    {
-        ClearGrid();
         Color tempColor = secondSpriteRenderer.color;
-        tempColor.a = 0;
-        tempColor.a = Mathf.Clamp01(tempColor.a);
-        secondSpriteRenderer.color = tempColor;
+        tempColor.a = Mathf.Clamp01((float)filledCount / (gridSizeX * gridSizeY));
+        secondSpriteRenderer.color = tempColor; // İkinci sprite renderer'ın rengini güncelle
+        oilCountText.text = "%" + (int)(tempColor.a * 100);
 
-
-        tempColor = thirdSpriteRenderer.color;
-        tempColor.a = 0;
-        tempColor.a = Mathf.Clamp01(tempColor.a);
-        thirdSpriteRenderer.color = tempColor;
-        
-        GetComponent<SpriteRenderer>().sprite = frontFaces[0];
-        secondSpriteRenderer.sprite = frontFaces[1];
-        thirdSpriteRenderer.sprite = frontFaces[2];
     }
-    public void SwitchToBack()
-    {
-        ClearGrid();
-        Color tempColor = secondSpriteRenderer.color;
-        tempColor.a = 0;
-        tempColor.a = Mathf.Clamp01(tempColor.a);
-        secondSpriteRenderer.color = tempColor;
-        tempColor = thirdSpriteRenderer.color;
-        tempColor.a = 0;
-        tempColor.a = Mathf.Clamp01(tempColor.a);
-        thirdSpriteRenderer.color = tempColor;
-        GetComponent<SpriteRenderer>().sprite = backFaces[0];
-        secondSpriteRenderer.sprite = backFaces[1];
-        thirdSpriteRenderer.sprite = backFaces[2];
-    }
-
     /// <summary>
     /// (İsteğe bağlı) Grid temizleyici
     /// </summary>
@@ -122,6 +93,10 @@ public class OilingManager : MonoBehaviour
     public bool GetIsFullfilled()
     {
         return filledCount >= gridSizeX * gridSizeY;
+    }
+    public float GetRubAmount()
+    {
+        return thirdSpriteRenderer.color.a;
     }
     void OnDrawGizmos()
     {
