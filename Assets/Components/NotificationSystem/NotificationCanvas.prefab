@@ -569,6 +569,11 @@ MonoBehaviour:
     uiOrScene: 0
     uiMiniGameType: 2
     scene: OilPreparing
+  - gameName: Cirit topla
+    isGameFinished: 0
+    uiOrScene: 0
+    uiMiniGameType: 3
+    scene: 
   nextGame:
     gameName: 
     isGameFinished: 0

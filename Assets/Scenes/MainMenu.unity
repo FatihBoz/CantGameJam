@@ -376,8 +376,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.1900024, y: -6.3900146}
-  m_SizeDelta: {x: 308.9901, y: 77.2475}
+  m_AnchoredPosition: {x: -1.3915, y: -6.3900146}
+  m_SizeDelta: {x: 433.9369, y: 77.2475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &968282971
 MonoBehaviour:
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ok yap
+  m_text: "Ok haz\u0131rla"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: da30c4107f0641245937cd4b19cad72b, type: 2}
   m_sharedMaterial: {fileID: -1385012033805085937, guid: da30c4107f0641245937cd4b19cad72b, type: 2}
@@ -851,34 +851,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2718835786089097701, guid: e6fbaa727194d4b49be5ba80754af252, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 326
-      objectReference: {fileID: 0}
-    - target: {fileID: 2718835786089097701, guid: e6fbaa727194d4b49be5ba80754af252, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.000049591064
-      objectReference: {fileID: 0}
-    - target: {fileID: 5897762750174270770, guid: e6fbaa727194d4b49be5ba80754af252, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 434.1476
-      objectReference: {fileID: 0}
-    - target: {fileID: 5897762750174270770, guid: e6fbaa727194d4b49be5ba80754af252, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 52.923
-      objectReference: {fileID: 0}
-    - target: {fileID: 5897762750174270770, guid: e6fbaa727194d4b49be5ba80754af252, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -415.8324
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986821790593497431, guid: e6fbaa727194d4b49be5ba80754af252, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986821790593497431, guid: e6fbaa727194d4b49be5ba80754af252, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.000022888184
-      objectReference: {fileID: 0}
     - target: {fileID: 7698031836251651412, guid: e6fbaa727194d4b49be5ba80754af252, type: 3}
       propertyPath: m_Name
       value: NotificationCanvas
