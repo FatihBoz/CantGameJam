@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3390473964597734346}
   - component: {fileID: 4743965655751339235}
   - component: {fileID: 6732750003266156712}
+  - component: {fileID: 908179185001073404}
   m_Layer: 5
-  m_Name: CiritBroken 2
+  m_Name: Cirit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 410, y: -112}
-  m_SizeDelta: {x: 84, y: 518}
+  m_SizeDelta: {x: 84, y: 616}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3390473964597734346
 CanvasRenderer:
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 180814969271378533, guid: 6b3998e02e2214848be8c5aa7b1847bf, type: 3}
+  m_Sprite: {fileID: 7686700919993857772, guid: 6b3998e02e2214848be8c5aa7b1847bf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -88,4 +89,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6c53e3eb3db594094b7e2a08969154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  types: 1
   scaleFactor: 1.15
+--- !u!225 &908179185001073404
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2175922110035626104}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

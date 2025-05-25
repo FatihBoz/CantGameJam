@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3390473964597734346}
   - component: {fileID: 4743965655751339235}
   - component: {fileID: 6732750003266156712}
+  - component: {fileID: -8864855999277563066}
   m_Layer: 5
   m_Name: CiritBroken
   m_TagString: Untagged
@@ -88,4 +89,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6c53e3eb3db594094b7e2a08969154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  types: 2
   scaleFactor: 1.15
+--- !u!225 &-8864855999277563066
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2175922110035626104}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

@@ -51,4 +51,8 @@ public class ParticleTraker : MonoBehaviour
         // İsteğe bağlı debug çizgisi
         Debug.DrawLine(lowestWorldPos, lowestWorldPos + Vector3.up * 0.2f, Color.red);
     }
+    public void SwitchOilManager(OilingManager newOilingManager)
+    {
+        oilingManager = newOilingManager;
+    }
 }

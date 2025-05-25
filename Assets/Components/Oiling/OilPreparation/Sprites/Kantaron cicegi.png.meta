@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 00683391f706de74cb134cc096cda8b7
+guid: 82d9cac1c5d2545429a0e3b6780977e7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2334379338235972759
-    second: kesilmissiseee_0
+      213: 7687765331427107872
+    second: Kantaron cicegi_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,43 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kesilmissiseee_0
+      name: Kantaron cicegi_0
       rect:
         serializedVersion: 2
-        x: 260
-        y: 25
-        width: 871
-        height: 725
+        x: 21
+        y: 11
+        width: 66
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 963fe652c5e9a9fd0800000000000000
-      internalID: -2334379338235972759
+      spriteID: 024a64066dd60ba60800000000000000
+      internalID: 7687765331427107872
       vertices: []
       indices: 
       edges: []
@@ -161,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      kesilmissiseee_0: -2334379338235972759
+      Kantaron cicegi_0: 7687765331427107872
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

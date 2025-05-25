@@ -31,6 +31,8 @@ public class HandPositioner : MonoBehaviour
     private float lastMouseY;
     private float lastMoveTime;
 
+    public DraggablePour draggablePour;
+
     void Start()
     {
         firstPos = transform.position;
@@ -47,6 +49,7 @@ public class HandPositioner : MonoBehaviour
             direction = 0;
             lastDirection = 0;
             lastCycleTime = Time.time;
+            draggablePour.LeaveHand(); // Elden bırakma işlemi
 
         }
         else if(Input.GetMouseButton(2))
@@ -57,9 +60,6 @@ public class HandPositioner : MonoBehaviour
     }
     void Update()
     {
-        if (!oilManager.GetIsFullfilled())
-            return;
-
         if (handing)
         {
             Movement();
@@ -71,7 +71,7 @@ public class HandPositioner : MonoBehaviour
             if (Mathf.Abs(deltaY) > 5f && deltaTime > 0)
             {
                 float verticalSpeed = Mathf.Abs(deltaY) / deltaTime;
-
+                
                 // örnek: verticalSpeed ~ 100 ile 600 arasında olmalı (piksel/saniye)
                 if (verticalSpeed >= minSpeed && verticalSpeed <= maxSpeed)
                 {
@@ -87,11 +87,14 @@ public class HandPositioner : MonoBehaviour
         // Resetleme tuşları
         if (Input.GetMouseButtonDown(1))
         {
-            handing = false;
-            transform.position = firstPos;
+            LeaveHand();
         }
     }
-
+    public void LeaveHand()
+    {
+        handing = false;
+        transform.position = firstPos;
+    }
     public void Movement()
     {
         Vector3 currentMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -106,5 +109,9 @@ public class HandPositioner : MonoBehaviour
         tempPosition = new Vector3(0f, currentMousePos.y - shouldMinus, 0f);
         tempPosition.y = Mathf.Clamp(tempPosition.y, minPosY, maxPosY);
         transform.position = tempPosition;
+    }
+    public void SwitchOilManager(OilingManager oilingManager)
+    {
+        oilManager = oilingManager;
     }
 }

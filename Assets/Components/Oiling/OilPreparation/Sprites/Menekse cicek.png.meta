@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 00683391f706de74cb134cc096cda8b7
+guid: 725c4199646263c409b2a0b12f5e10c7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2334379338235972759
-    second: kesilmissiseee_0
+      213: 6188932807682081591
+    second: Menekse cicek_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,43 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kesilmissiseee_0
+      name: Menekse cicek_0
       rect:
         serializedVersion: 2
-        x: 260
-        y: 25
-        width: 871
-        height: 725
+        x: 4
+        y: 2
+        width: 86
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 963fe652c5e9a9fd0800000000000000
-      internalID: -2334379338235972759
+      spriteID: 733c6a4299183e550800000000000000
+      internalID: 6188932807682081591
       vertices: []
       indices: 
       edges: []
@@ -161,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      kesilmissiseee_0: -2334379338235972759
+      Menekse cicek_0: 6188932807682081591
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

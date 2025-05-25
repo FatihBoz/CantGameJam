@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 00683391f706de74cb134cc096cda8b7
+guid: 0eca7bae76d986446936eabd3dc33b23
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2334379338235972759
-    second: kesilmissiseee_0
+      213: -3469835314150835735
+    second: cirit arka plan_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kesilmissiseee_0
+      name: cirit arka plan_0
       rect:
         serializedVersion: 2
-        x: 260
-        y: 25
-        width: 871
-        height: 725
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 963fe652c5e9a9fd0800000000000000
-      internalID: -2334379338235972759
+      spriteID: 9e9feee6a2ba8dfc0800000000000000
+      internalID: -3469835314150835735
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      kesilmissiseee_0: -2334379338235972759
+      cirit arka plan_0: -3469835314150835735
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
