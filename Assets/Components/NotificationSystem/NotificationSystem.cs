@@ -70,7 +70,7 @@ public class NotificationSystem : MonoBehaviour
 
     private void Update()
     {
-        if (currentGameCountdown<=0 && isInGame)
+        if ((currentGameCountdown <= 0 && isInGame) || (isNextGameReady && nextGameCountdown<=0))
         {
             SceneManager.LoadScene(0);
         }
