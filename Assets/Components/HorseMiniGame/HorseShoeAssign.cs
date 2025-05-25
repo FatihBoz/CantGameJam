@@ -39,7 +39,9 @@ public class HorseShoeAssign : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
             if (horse != null)
             {
+                Debug.Log($"HorseShoeAssign: {horseShoeType} at {mousePos2D} assigned to horse: {horse.name}");
                 horse.Model.AssignHorseShoe(horseShoeType);
+
                 transform.position = originalPosition;
                 return;
             }

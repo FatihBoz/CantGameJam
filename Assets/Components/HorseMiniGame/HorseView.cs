@@ -30,6 +30,8 @@ public class HorseView : MonoBehaviour
 
         if (weightText != null)
             weightText.text = $"Weight: {model.Weight:F1}";
+
+        ShowHorseShoe(model);
     }
 
     public void ShowHorseShoe(HorseModel shoeType)

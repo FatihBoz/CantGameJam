@@ -33,6 +33,4 @@ public class Horse: MonoBehaviour
 
         return defenseScore + (speed * 0.5f) + (weight * 0.3f);
     }
-
-    //   CiritBehavior ciritBehavior;
 }

@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHorses: {fileID: 1697130689}
-  HorsePrefabEnemy: {fileID: 8258244195447311526, guid: 9117a9e409dee614f943cf5bd116898a, type: 3}
+  HorsePrefabEnemy: {fileID: 8258244195447311526, guid: 4f89e3847bbdae246a6dc1b5a1f6bd64, type: 3}
 --- !u!4 &422789308
 Transform:
   m_ObjectHideFlags: 0
@@ -837,6 +837,52 @@ RectTransform:
   m_AnchoredPosition: {x: 554, y: -172}
   m_SizeDelta: {x: 145.3754, y: 77.53}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &765660249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 765660251}
+  - component: {fileID: 765660250}
+  m_Layer: 0
+  m_Name: GameFlowManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &765660250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765660249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff5de79bbfe24e49893f66726b5d3bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyButton: {fileID: 1545815820}
+  battleSceneName: BattleScene
+--- !u!4 &765660251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765660249}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.15560636, y: -1.4025755, z: -0.023843374}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &783482835 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8601276521840964047, guid: fc06bee4ee4edfd418a8554e7daf3538, type: 3}
@@ -3383,3 +3429,4 @@ SceneRoots:
   - {fileID: 194286857}
   - {fileID: 422789308}
   - {fileID: 1697130690}
+  - {fileID: 765660251}

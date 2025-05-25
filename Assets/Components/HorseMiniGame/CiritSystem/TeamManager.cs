@@ -80,10 +80,12 @@ public class TeamManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             GameObject newHorse = Instantiate(HorsePrefabEnemy);
-            PlayerHorse enemyHorse = newHorse.GetComponent<PlayerHorse>();
+            EnemyHorse enemyHorse = newHorse.GetComponent<EnemyHorse>();
             if (enemyHorse != null)
             {
                 enemyTeam.AddHorse(enemyHorse);
+                enemyHorse.PrintStats();
+
             }
         }
 
