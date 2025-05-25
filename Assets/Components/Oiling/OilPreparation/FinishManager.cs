@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinishManager : MonoBehaviour
 {
@@ -30,5 +31,10 @@ public class FinishManager : MonoBehaviour
     public bool IsFinished()
     {
         return isFinished;
+    }
+    public void RealFinish()
+    {
+        NotificationSystem.Instance.ReturnToMainMenu();
+        SceneManager.LoadScene(0);
     }
 }

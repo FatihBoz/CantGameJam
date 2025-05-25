@@ -51,6 +51,7 @@ public class ShotCleanMiniGame : MonoBehaviour
 
     public void DESTROY()
     {
+        NotificationSystem.Instance.ReturnToMainMenu();
         Destroy(gameObject);
     }
 

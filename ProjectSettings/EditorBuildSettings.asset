@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/FatihScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/EmreSceneCirit.unity
-    guid: f0c478bc21ccb974cb8428dd4129b8ad
+    path: Assets/Scenes/GuresYag.unity
+    guid: 5062d8a3bb9c3004a830f10591157bae
   - enabled: 1
-    path: Assets/Scenes/BattleScene.unity
-    guid: d0d6908e01ff11042aae6d2d1f4844ce
+    path: Assets/Scenes/OilPreparing.unity
+    guid: 05dee5b1696c8ed42b2102db50494346
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

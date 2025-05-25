@@ -39,6 +39,7 @@ public class ArrowCollectMiniGame : MonoBehaviour
 
     public void Destroy()
     {
+        NotificationSystem.Instance.ReturnToMainMenu();
         Destroy(gameObject);
     }
 
