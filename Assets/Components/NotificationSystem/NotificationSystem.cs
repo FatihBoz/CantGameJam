@@ -96,7 +96,7 @@ public class NotificationSystem : MonoBehaviour
         isNextGameReady = true;
         nextGame = totalGameList[Random.Range(0, totalGameList.Count)];
         notificationTitleText.text = nextGame.gameName;
-        nextGameCountdown = 60f;
+        nextGameCountdown = 90f;
     }
     public bool LoadNextGame(bool type, UiMiniGameType uiType, string sceneName)
     {
