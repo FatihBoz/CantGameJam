@@ -164,7 +164,11 @@ public class MixCup : MonoBehaviour
     }
     public void CheckSend()
     {
-        if (IsRecipeMatched()&& !FinishManager.Instance.IsFinished())
+         if (FinishManager.Instance.IsFinished())
+        {
+            return;
+        }
+        if (IsRecipeMatched())
         {
             Debug.Log("Tarif eşleşti! Gönderiliyor...");
             FinishManager.Instance.FinishTrue();

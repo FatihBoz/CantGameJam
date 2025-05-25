@@ -21,6 +21,10 @@ public class HumanRotater : MonoBehaviour
     }
     public void HumanRotateButtonClick()
     {
+        if (OilingFinishCheck.Instance.IsFullOilingFinished())
+        {
+            return;
+        }
         facingDirection = -facingDirection;
         if (facingDirection==1)
         {
@@ -40,7 +44,7 @@ public class HumanRotater : MonoBehaviour
     {
         if (!oilingFinished && backOiler.GetRubAmount() == 1f && frontOiler.GetRubAmount()==1f)
         {
-            oilingFinished = true;
+            OilingFinishCheck.Instance.FinishOiling();
             Debug.Log("game ended");
         }
     }

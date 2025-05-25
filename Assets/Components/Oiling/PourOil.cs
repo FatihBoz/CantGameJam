@@ -24,7 +24,7 @@ public class DraggablePour : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (Input.GetMouseButton(0)) // Sol tıkla drag başlar
+        if (Input.GetMouseButton(0) && !OilingFinishCheck.Instance.IsFullOilingFinished()) // Sol tıkla drag başlar
         {
             Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             offset = transform.position - new Vector3(mousePos.x, mousePos.y, transform.position.z);
@@ -58,7 +58,12 @@ public class DraggablePour : MonoBehaviour
 
     void Update()
     {
-        if (isDragging)
+        if (OilingFinishCheck.Instance.IsFullOilingFinished())
+        {
+            LeaveHand();
+            return;
+        }
+        if (isDragging && !OilingFinishCheck.Instance.IsFullOilingFinished())
         {
             // Sürüklemeyi takip et
             Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
