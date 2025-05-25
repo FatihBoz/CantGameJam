@@ -19,7 +19,7 @@ public class HorseAssignerUI : MonoBehaviour
     [SerializeField] private Transform horseParent;
 
     private int currentIndex = 0;
-    private List<PlayerHorse> horseList = new List<PlayerHorse>();
+    private List<GameObject> horseList = new List<GameObject>();
 
     void Start()
     {
@@ -33,8 +33,10 @@ public class HorseAssignerUI : MonoBehaviour
         rightButton.onClick.AddListener(MoveRight);
         changeUIButton.onClick.AddListener(ChangeUIView);
 
+        TeamManager.Instance.AssignPlayerTeamHorses(horseParent);
+        horseList = TeamManager.Instance.ReturnPlayerTeamList();
         // Parent altýndaki PlayerHorse'larý listeye al
-        horseList = new List<PlayerHorse>(horseParent.GetComponentsInChildren<PlayerHorse>());
+        //horseList = new List<Horse>(horseParent.GetComponentsInChildren<Horse>());
 
         print($"Toplam {horseList.Count} adet PlayerHorse bulundu.");
 
@@ -83,8 +85,9 @@ public class HorseAssignerUI : MonoBehaviour
     {
         Debug.Log("currentIndex: " + currentIndex);
 
-        PlayerHorse currentHorse = horseList[currentIndex];
-        ShowHorseDetails(currentHorse.Model);
+        GameObject currentHorse = horseList[currentIndex];
+        Horse currentHorseComp = currentHorse.GetComponent<Horse>();
+        ShowHorseDetails(currentHorseComp.Model);
 
         for (int i = 0; i < horseParent.childCount; i++)
         {
@@ -102,8 +105,10 @@ public class HorseAssignerUI : MonoBehaviour
 
     private void UpdateHorseStats()
     {
-        PlayerHorse currentHorse = horseList[currentIndex];
-        currentHorse.CalculateScores(); // skorlarý hesapla
-        horseView.UpdateStatsUI(currentHorse.Model); // UI'ý güncelle
+        GameObject currentHorse = horseList[currentIndex];
+        Horse currentHorseComp = currentHorse.GetComponent<Horse>();
+
+        currentHorseComp.CalculateScores(); // skorlarý hesapla
+        horseView.UpdateStatsUI(currentHorseComp.Model); // UI'ý güncelle
     }
 }

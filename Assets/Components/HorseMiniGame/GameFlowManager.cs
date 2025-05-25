@@ -22,7 +22,7 @@ public class GameInitializer : MonoBehaviour
     {
         Debug.Log("Apply butonuna basýldý. Takýmlar hazýrlanýyor...");
 
-        TeamManager.Instance.AssignPlayerTeamHorses();  // UI'deki atlarý alýr
+        //TeamManager.Instance.AssignPlayerTeamHorses();  // UI'deki atlarý alýr
         // AssignEnemyTeamHorses zaten Awake'te çaðrýlýyor ama istenirse burada da çaðrýlabilir
 
         // Tüm veriler hazýr, sahneyi deðiþtir
