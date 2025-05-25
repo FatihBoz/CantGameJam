@@ -36,7 +36,7 @@ public class Trash : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointer
             if (halfCiritCount == CiritMiniGame.halfCiritCount)
             {
                 miniGameCanBeFinished = true;
-                finishButton.gameObject.SetActive(true);
+                finishButton.gameObject.SetActive(true);    
 
 
             }
