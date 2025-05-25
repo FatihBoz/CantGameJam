@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4693829212441172871}
   - component: {fileID: 1203068275306586676}
   - component: {fileID: 4743869886685902795}
-  - component: {fileID: 8774267566648404742}
+  - component: {fileID: 907358002876636879}
   m_Layer: 0
   m_Name: Horse
   m_TagString: Untagged
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 8.183807, y: 6.899994}
   m_EdgeRadius: 0
---- !u!114 &8774267566648404742
+--- !u!114 &907358002876636879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8258244195447311526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f827fba008a70ef41b22e61300e85186, type: 3}
+  m_Script: {fileID: 11500000, guid: 6143fc58552f3d047bad79fac625063b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 0}

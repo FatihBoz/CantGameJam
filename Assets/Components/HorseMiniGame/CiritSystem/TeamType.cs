@@ -5,7 +5,7 @@ public class TeamType
 {
     private const int MaxHorseCount = 5;
 
-    private List<Horse> horseTeamList = new List<Horse>();
+    private List<GameObject> horseTeamList = new List<GameObject>();
 
     private TeamColor teamColor;
     public TeamColor TeamColor => teamColor;
@@ -23,7 +23,7 @@ public class TeamType
         scorePoint += score;
     }
 
-    public void AddHorse(Horse horse)
+    public void AddHorse(GameObject horse)
     {
         if (horseTeamList.Count >= MaxHorseCount)
         {
@@ -34,7 +34,7 @@ public class TeamType
         horseTeamList.Add(horse);
     }
 
-    public void RemoveHorse(Horse horse)
+    public void RemoveHorse(GameObject horse)
     {
         if (horseTeamList.Contains(horse))
         {
@@ -42,7 +42,7 @@ public class TeamType
         }
     }
 
-    public List<Horse> GetHorseList()
+    public List<GameObject> GetHorseList()
     {
         return horseTeamList;
     }

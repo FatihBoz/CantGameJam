@@ -35,7 +35,7 @@ public class HorseShoeAssign : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         if (col != null)
         {
-            PlayerHorse horse = col.GetComponent<PlayerHorse>();
+            Horse horse = col.GetComponent<Horse>();
 
             if (horse != null)
             {

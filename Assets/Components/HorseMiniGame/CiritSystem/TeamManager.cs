@@ -5,7 +5,7 @@ public class TeamManager : MonoBehaviour
 {
     public static TeamManager Instance { get; private set; }
 
-    public GameObject PlayerHorses;
+   // public GameObject PlayerHorses;
     public GameObject HorsePrefabEnemy;
 
     public List<TeamType> teams = new List<TeamType>();
@@ -49,7 +49,7 @@ public class TeamManager : MonoBehaviour
         return GetTeamByColor(TeamColor.Red);
     }
 
-    public void AssignPlayerTeamHorses()
+    public void AssignPlayerTeamHorses(Transform PlayerHorses)
     {
         if (PlayerHorses == null)
         {
@@ -60,9 +60,11 @@ public class TeamManager : MonoBehaviour
         PlayerHorse[] horses = PlayerHorses.GetComponentsInChildren<PlayerHorse>();
         TeamType playerTeam = ReturnPlayerTeam();
 
+        Debug.Log($"Player takýmýna at atanýyor, toplam {horses.Length} at bulundu.");
+
         foreach (PlayerHorse horse in horses)
         {
-            playerTeam.AddHorse(horse);
+            playerTeam.AddHorse(horse.gameObject);
         }
 
         Debug.Log($"Player takýmýna {horses.Length} at atandý.");
@@ -83,12 +85,25 @@ public class TeamManager : MonoBehaviour
             EnemyHorse enemyHorse = newHorse.GetComponent<EnemyHorse>();
             if (enemyHorse != null)
             {
-                enemyTeam.AddHorse(enemyHorse);
+                enemyTeam.AddHorse(enemyHorse.gameObject);
                 enemyHorse.PrintStats();
 
             }
         }
 
         Debug.Log("Enemy takýmýna 5 at atandý.");
+    }
+
+    public List<GameObject> ReturnPlayerTeamList()
+    {
+        TeamType playerTeam = ReturnPlayerTeam();
+        if (playerTeam == null)
+        {
+            Debug.LogError("Player team bulunamadý!");
+            return null;
+        }
+        List<GameObject> horses = playerTeam.GetHorseList();
+        
+        return horses;
     }
 }
