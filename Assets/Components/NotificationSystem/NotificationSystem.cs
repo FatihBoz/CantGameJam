@@ -14,10 +14,11 @@ public class NotificationSystem : MonoBehaviour
     public RectTransform notificationPanel;
 
     public List<GameType> totalGameList = new List<GameType>();
-    GameType nextGame;
-    GameType curGame;
+    public GameType nextGame;
+    public GameType curGame;
 
-
+    public GameObject curGamePanel;
+    public TextMeshProUGUI curGameCountdownText;
     public float currentGameCountdown;
 
     public bool isNextGameReady;
@@ -40,6 +41,8 @@ public class NotificationSystem : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            curGamePanel.gameObject.SetActive(false);
+
         }
     }
     void Start()
@@ -67,9 +70,10 @@ public class NotificationSystem : MonoBehaviour
 
     private void Update()
     {
-        if (currentGameCountdown>=0)
+        if (currentGameCountdown>=0 && isInGame)
         {
             currentGameCountdown -= Time.deltaTime;
+            curGameCountdownText.text = $"{currentGameCountdown:0.00}";
         }
 
         if (isNextGameReady)
@@ -91,19 +95,42 @@ public class NotificationSystem : MonoBehaviour
     public void SelectNextGame()
     {
         isNextGameReady = true;
-        GameType nextGame = totalGameList[Random.Range(0, totalGameList.Count)];
+        nextGame = totalGameList[Random.Range(0, totalGameList.Count)];
         notificationTitleText.text = nextGame.gameName;
         nextGameCountdown = 60f;
     }
-    public void LoadNextGame()
+    public bool LoadNextGame(bool type, UiMiniGameType uiType, string sceneName)
     {
-        if (curGame.isGameFinished)
+        Debug.Log(uiType);
+        Debug.Log(nextGame.uiMiniGameType);
+        if (type)
         {
-            curGame = nextGame;
-            currentGameCountdown = nextGameCountdown;
-            isNextGameReady = false;
-            notificatonFreq = 25f;
+            if (sceneName != nextGame.scene)
+            {
+                return false;
+            }
         }
+        else
+        {
+            if (uiType != nextGame.uiMiniGameType)
+            {
+                return false;
+            }
+        }
+        curGamePanel.gameObject.SetActive(true);
+        HideNotification();
+        isInGame = true;
+        curGame = nextGame;
+        currentGameCountdown = nextGameCountdown;
+        isNextGameReady = false;
+        notificatonFreq = 25f;
+        return true;
     }
+    public void ReturnToMainMenu()
+    {
+        isInGame = false;
+        curGamePanel.gameObject.SetActive(false);
+
+}
 
 }

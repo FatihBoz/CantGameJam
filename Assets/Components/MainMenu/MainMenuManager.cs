@@ -12,6 +12,10 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnButtonPressed(UiMiniGameType type)
     {
+        if (!NotificationSystem.Instance.LoadNextGame(false, type, "HEXAPAWA"))
+        {
+            return;
+        }
         UiMiniGame t = uiMiniGamePrefabs.FirstOrDefault(prefab => prefab.type == type);
         Instantiate(t.prefab, canvas.transform);
     }
@@ -19,6 +23,10 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnButtonPressed(string sceneName)
     {
+        if (!NotificationSystem.Instance.LoadNextGame(true, UiMiniGameType.None, sceneName))
+        {
+            return;
+        }
         SceneManager.LoadScene(sceneName);
     }
 }
@@ -48,11 +56,13 @@ public enum UiMiniGameType
     ArrowMaking,
     ShotCleaning,
     CiritCollecting,
+    None
 }
 
 public enum SceneMiniGameType
 {
     Horse,
     OilMaking,
-    Oiling
+    Oiling,
+    None
 }
